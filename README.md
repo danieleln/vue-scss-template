@@ -59,7 +59,7 @@ npm run dev
 ## Documentation
 ### Importing fonts
 to add font faces to scss do the following:
-1. create the font folder inside `src/assets/fonts (eg. `src/fonts/My Font/`).
+1. create the font folder inside `src/assets/fonts` (eg. `src/fonts/My Font/`).
 2. add files inside the folder you just created:
     ```
     .
