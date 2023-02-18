@@ -5,7 +5,5 @@
 </template>
 
 <style lang="scss" scoped>
-    @use 'src/scss/globals';
-    @use 'src/scss/config';
-    @use 'src/scss/mixins';
+    @use 'src/scss/abstracts';
 </style>

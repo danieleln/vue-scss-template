@@ -1,20 +1,20 @@
-@use './config' as conf;
+@use '../abstracts' as abs;
 
 $font-family-default:   "", Helvetica, sans-serif;
 $font-family-heading:   "", Times, serif;
 $font-family-accent:    "", Times, serif;
 
-$font-weight-default:   conf.font-weight(4);
-$font-weight-heading:   conf.font-weight(7);
+$font-weight-default:   abs.font-weight(4);
+$font-weight-heading:   abs.font-weight(7);
 
 $font-size-root:        16px;
-$font-size-default:     conf.font-size(4);
-$font-size-h6:          conf.font-size(7);
-$font-size-h5:          conf.font-size(8);
-$font-size-h4:          conf.font-size(9);
-$font-size-h3:          conf.font-size(10);
-$font-size-h2:          conf.font-size(11);
-$font-size-h1:          conf.font-size(12);
+$font-size-default:     abs.font-size(4);
+$font-size-h6:          abs.font-size(6);
+$font-size-h5:          abs.font-size(8);
+$font-size-h4:          abs.font-size(12);
+$font-size-h3:          abs.font-size(16);
+$font-size-h2:          abs.font-size(20);
+$font-size-h1:          abs.font-size(24);
 
 
 
@@ -34,6 +34,9 @@ $font-faces: [
         ]
     ),
 ];
+
+
+
 
 $colors: (
     dark: (

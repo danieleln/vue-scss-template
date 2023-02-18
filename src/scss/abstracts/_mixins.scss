@@ -1,8 +1,8 @@
-@use '../config' as conf;
+@use './functions' as func;
 
 // Media queries
 @mixin media-query($size) {
-    @media screen and (min-width: #{conf.breakpoint($size)}) {
+    @media screen and (min-width: #{func.breakpoint($size)}) {
         @content;
     }
 }

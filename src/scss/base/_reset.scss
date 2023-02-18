@@ -1,4 +1,4 @@
-@use '../globals' as glb;
+@use '../config' as conf;
 @use 'sass:map';
 
 
@@ -31,7 +31,7 @@ img, picture, svg, video {
 
 
 // Font faces
-@each $font-face in glb.$font-faces {
+@each $font-face in conf.$font-faces {
     $family: map.get($font-face, family);
     $folder: map.get($font-face, folder);
 
@@ -39,7 +39,7 @@ img, picture, svg, video {
         $style:  map.get($file, style);
         $weight: map.get($file, weight);
         $format: map.get($file, format);
-        $path: "#{glb.$fonts-folder}/#{$folder}/#{map.get($file, filename)}";
+        $path: "#{conf.$fonts-folder}/#{$folder}/#{map.get($file, filename)}";
 
         @font-face {
             font-family: $family;
@@ -55,12 +55,12 @@ img, picture, svg, video {
 
 // Html & body tags
 html {
-    font-size:   glb.$font-size-root;
+    font-size:   conf.$font-size-root;
 }
 
 body {
-    font-family: glb.$font-family-default;
-    font-size: glb.$font-size-default;
+    font-family: conf.$font-family-default;
+    font-size: conf.$font-size-default;
     min-height: 100vh;
     min-height: 100svh;
 }
@@ -69,15 +69,15 @@ body {
 
 // Headings
 h1,h2,h3,h4,h5,h6 {
-    font-family: glb.$font-family-heading;
-    font-weight: glb.$font-weight-heading;
+    font-family: conf.$font-family-heading;
+    font-weight: conf.$font-weight-heading;
 }
 
-h1 { font-size: glb.$font-size-h1 }
-h2 { font-size: glb.$font-size-h2 }
-h3 { font-size: glb.$font-size-h3 }
-h4 { font-size: glb.$font-size-h4 }
-h5 { font-size: glb.$font-size-h5 }
-h6 { font-size: glb.$font-size-h6 }
+h1 { font-size: conf.$font-size-h1 }
+h2 { font-size: conf.$font-size-h2 }
+h3 { font-size: conf.$font-size-h3 }
+h4 { font-size: conf.$font-size-h4 }
+h5 { font-size: conf.$font-size-h5 }
+h6 { font-size: conf.$font-size-h6 }
 
 

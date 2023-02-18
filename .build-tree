@@ -1,0 +1,2 @@
+#!/usr/bin/bash
+tree -I node_modules/ -I public/ -I dist -I package-lock.json -I _index.scss

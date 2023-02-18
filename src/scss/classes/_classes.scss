@@ -1,0 +1,47 @@
+@use '../config/variables' as vars;
+@use '../abstracts/functions' as func;
+
+
+$property-value-map: (
+    margin-inline:  vars.$sizes,
+    margin-block:   vars.$sizes,
+    margin-left:    vars.$sizes,
+    margin-top:     vars.$sizes,
+    margin-right:   vars.$sizes,
+    margin-bottom:  vars.$sizes,
+    padding-inline: vars.$sizes,
+    padding-block:  vars.$sizes,
+    padding-left:   vars.$sizes,
+    padding-top:    vars.$sizes,
+    padding-right:  vars.$sizes,
+    padding-bottom: vars.$sizes,
+
+    font-size:      vars.$sizes,
+    font-weight:    vars.$font-weights, 
+
+    width:          vars.$sizes,
+    height:         vars.$sizes,
+
+    border-radius:  vars.$border-radii,
+);
+
+
+@each $property, $map in $property-value-map {
+    $acronym: func.property-acronym($property);
+
+    @each $keyword, $value in $map {
+        .#{$acronym}-#{$keyword} {
+            #{$property}: $value;
+        }
+    }
+
+}
+
+
+
+
+.container {
+    display: block;
+    margin: 0 auto;
+    padding-inline: func.padding(4);
+}

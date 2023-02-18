@@ -1,0 +1,49 @@
+@use '../config/variables' as vars;
+@use 'sass:map';
+
+
+@function map-get-safe($map, $key, $error: null) {
+    @if map.has-key($map, $key) {
+        @return map.get($map, $key);
+    } @else {
+        @if not $error {
+            $error: "Invalid key #{$key}. Valid keys are [#{map.keys($map)}]";
+        }
+        @error $error;
+    }
+}
+
+
+
+
+@function breakpoint($index) {
+    @return map-get-safe(vars.$screen-sizes, $index);
+}
+
+@function font-size($index) {
+    @return map-get-safe(vars.$sizes, $index);
+}
+
+@function font-weight($index) {
+    @return map-get-safe(vars.$font-weights, $index);
+}
+
+@function margin($index) {
+    @return map-get-safe(vars.$sizes, $index);
+}
+
+@function padding($index) {
+    @return map-get-safe(vars.$sizes, $index);
+}
+
+@function border-radius($index) {
+    @return map-get-safe(vars.$border-radii, $index);
+}
+
+
+    
+@function property-acronym($property) {
+    $error: 'Property "#{$property}" has no acronym yet!';
+    $property-acronyms: map-get-safe(vars.$acronyms, 'properties');
+    @return map-get-safe($property-acronyms, $property, $error);
+}
