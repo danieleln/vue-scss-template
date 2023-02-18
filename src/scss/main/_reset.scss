@@ -1,0 +1,83 @@
+@use '../globals' as glb;
+@use 'sass:map';
+
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+}
+
+img, picture, svg, video {
+    display: block;
+    max-width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {  
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+
+
+// Font faces
+@each $font-face in glb.$font-faces {
+    $family: map.get($font-face, family);
+    $folder: map.get($font-face, folder);
+
+    @each $file in map.get($font-face, files) {
+        $style:  map.get($file, style);
+        $weight: map.get($file, weight);
+        $format: map.get($file, format);
+        $path: "#{glb.$fonts-folder}/#{$folder}/#{map.get($file, filename)}";
+
+        @font-face {
+            font-family: $family;
+            src: url($path) format($format);
+            font-weight: $weight;
+            font-style: $style;
+        }
+    }
+
+}
+
+
+
+// Html & body tags
+html {
+    font-size:   glb.$font-size-root;
+}
+
+body {
+    font-family: glb.$font-family-default;
+    font-size: glb.$font-size-default;
+    min-height: 100vh;
+    min-height: 100svh;
+}
+
+
+
+// Headings
+h1,h2,h3,h4,h5,h6 {
+    font-family: glb.$font-family-heading;
+    font-weight: glb.$font-weight-heading;
+}
+
+h1 { font-size: glb.$font-size-h1 }
+h2 { font-size: glb.$font-size-h2 }
+h3 { font-size: glb.$font-size-h3 }
+h4 { font-size: glb.$font-size-h4 }
+h5 { font-size: glb.$font-size-h5 }
+h6 { font-size: glb.$font-size-h6 }
+
+

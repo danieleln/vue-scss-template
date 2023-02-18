@@ -1,0 +1,145 @@
+@use 'sass:map';
+
+$screens: (
+    'xs': 320,
+    'sm': 480,
+    'md': 768,
+    'lg': 1024,
+    'xl': 1280,
+);
+
+$spacing: (
+    auto: auto,
+    1:  .25rem,
+    2:  .5rem,
+    3:  .75rem,
+    4:  1rem,
+    5:  1.25rem,
+    6:  1.5rem,
+    7:  1.75rem,
+    8:  2rem,
+    9:  2.25rem,
+    10: 2.5rem,
+    11: 2.75rem,
+    12: 3rem,
+    16: 4rem,
+    20: 5rem,
+    24: 6rem,
+    28: 7rem,
+    32: 8rem,
+    36: 9rem,
+    40: 10rem,
+    44: 11rem,
+    48: 12rem,
+    52: 13rem,
+    56: 14rem,
+    60: 15rem,
+    64: 16rem,
+);
+
+$font-sizes: (
+    1:  .25rem,
+    2:  .5rem,
+    3:  .75rem,
+    4:  1rem,
+    5:  1.25rem,
+    6:  1.5rem,
+    7:  1.75rem,
+    8:  2rem,
+    9:  2.25rem,
+    10: 2.5rem,
+    11: 2.75rem,
+    12: 3rem,
+);
+
+$font-weights: (
+    1: 100,
+    2: 200,
+    3: 300,
+    4: 400,
+    5: 500,
+    6: 600,
+    7: 700,
+    8: 800,
+    9: 900,
+);
+
+$border-radii: (
+    0: 0,
+    1: .125rem,
+    2: .25rem,
+    3: .5rem,
+    4: 9999px,
+);
+
+$timings: (
+    1:  100ms,
+    2:  200ms,
+    3:  300ms,
+    4:  400ms,
+    5:  500ms,
+    6:  600ms,
+    7:  700ms,
+    8:  800ms,
+    9:  900ms,
+    10: 1000ms,
+);
+
+$acronyms: (
+    'margin-block':     'my',
+    'margin-inline':    'mx',
+    'margin-left':      'ml',
+    'margin-top':       'mt',
+    'margin-right':     'mr',
+    'margin-bottom':    'mb',
+
+    'padding-block':    'py',
+    'padding-inline':   'px',
+    'padding-left':     'pl',
+    'padding-top':      'pt',
+    'padding-right':    'pr',
+    'padding-bottom':   'pb',
+
+    'font-size':        'fs',
+    'font-weight':      'fw',
+    'font-family':      'ff',
+
+    'color':            'fg',
+    'background-color': 'bg',
+
+    'left':             'l',
+    'top':              't',
+    'right':            'r',
+    'bottom':           'b',
+
+    'width':            'w',
+    'height' :          'h',
+
+    'border-radius':    'br'
+);
+
+
+
+
+@function map-safe-get ($map, $key, $error: null) {
+    @if map.has-key($map, $key) {
+        @return map.get($map, $key);
+    } @else {
+        @if not $error {
+            $error: "Invalid key #{$key}. Valid keys are [#{map.keys($map)}]";
+        }
+        @error $error;
+    }
+}
+
+@function acronym($property) {
+    $error: 'Property "#{$property}" has no acronym yet!';
+    @return map-safe-get($acronyms, $property, $error);
+}
+
+@function breakpoint($index) { @return map-safe-get($screens, $index); }
+@function font-size($index) { @return map-safe-get($font-sizes, $index); }
+@function font-weight($index) { @return map-safe-get($font-weights, $index); }
+@function margin($index) { @return map-safe-get($spacing, $index); }
+@function padding($index) { @return map-safe-get($spacing, $index); }
+@function border-radius($index) { @return map-safe-get($border-radii, $index); }

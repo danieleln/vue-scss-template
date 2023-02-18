@@ -1,0 +1,50 @@
+@use './config' as conf;
+
+$font-family-default:   "", Helvetica, sans-serif;
+$font-family-heading:   "", Times, serif;
+$font-family-accent:    "", Times, serif;
+
+$font-weight-default:   conf.font-weight(4);
+$font-weight-heading:   conf.font-weight(7);
+
+$font-size-root:        16px;
+$font-size-default:     conf.font-size(4);
+$font-size-h6:          conf.font-size(7);
+$font-size-h5:          conf.font-size(8);
+$font-size-h4:          conf.font-size(9);
+$font-size-h3:          conf.font-size(10);
+$font-size-h2:          conf.font-size(11);
+$font-size-h1:          conf.font-size(12);
+
+
+
+
+$fonts-folder: "../assets/fonts";
+$font-faces: [
+    (
+        family: "Open Sans",
+        folder: "OpenSans",
+        files: [
+            (
+                style: normal,
+                weight: 400,
+                format: truetype,
+                filename: "OpenSans-Regular.ttf"
+            ),
+        ]
+    ),
+];
+
+$colors: (
+    dark: (
+        400: #000,
+    ),
+    light: (
+        400: #fff,
+    ),
+    accent: (
+        400: #999,
+    )
+);
+
+

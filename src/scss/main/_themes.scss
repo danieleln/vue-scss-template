@@ -1,0 +1,34 @@
+@use '../globals' as glb;
+
+
+// CSS variables from colors
+:root {
+    @each $color, $shades in glb.$colors {
+        @each $shade, $color-code in $shades {
+            --color-#{$color}-#{$shade}: #{$color-code};
+        }
+    }
+}
+
+
+.theme-dark {
+    --color-bg: var(--color-dark-400, black);
+    --color-fg: var(--color-light-400, white);
+}
+
+.theme-light {
+    --color-bg: var(--color-light-400, white);
+    --color-fg: var(--color-dark-400, black);
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+}
+
+
+* {
+    transition: background-color 500ms ease-in-out, color 800ms ease-in-out;
+}
+
+

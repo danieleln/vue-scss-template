@@ -1,0 +1,46 @@
+@use '../config' as conf;
+
+
+$property-value-map: (
+    margin-inline:  conf.$spacing,
+    margin-block:   conf.$spacing,
+    margin-left:    conf.$spacing,
+    margin-top:     conf.$spacing,
+    margin-right:   conf.$spacing,
+    margin-bottom:  conf.$spacing,
+    padding-inline: conf.$spacing,
+    padding-block:  conf.$spacing,
+    padding-left:   conf.$spacing,
+    padding-top:    conf.$spacing,
+    padding-right:  conf.$spacing,
+    padding-bottom: conf.$spacing,
+
+    font-size:      conf.$font-sizes, 
+    font-weight:    conf.$font-weights, 
+
+    width:          conf.$spacing,
+    height:         conf.$spacing,
+
+    border-radius:  conf.$border-radii,
+);
+
+
+@each $property, $map in $property-value-map {
+    $acronym: conf.acronym($property);
+
+    @each $keyword, $value in $map {
+        .#{$acronym}-#{$keyword} {
+            #{$property}: $value;
+        }
+    }
+
+}
+
+
+
+
+.container {
+    display: block;
+    margin: 0 auto;
+    padding-inline: conf.padding(4);
+}

@@ -1,0 +1,47 @@
+@use '../config' as conf;
+
+// Media queries
+@mixin media-query($size) {
+    @media screen and (min-width: #{conf.breakpoint($size)}) {
+        @content;
+    }
+}
+
+
+@mixin media-query-self($size) {
+    @include media-query($size) {
+        & {
+            @content;
+        }
+    }
+}
+
+
+
+// Boxes
+@mixin box($width, $height: $width) {
+    width: $width;
+    height: $height;
+}
+
+
+
+// Pseudo classes
+@mixin before() {
+    position: relative;
+
+    &::before {
+        position: absolute;
+        @content;
+    }
+}
+
+@mixin after() {
+    position: relative;
+
+    &::after {
+        position: absolute;
+        @content;
+    }
+}
+
